@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 28b9084cc0ac6ac4685ea3dd1af1a0ef
+guid: ed20cca5166e6c54898798bc2c38a358
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9054535216388571201
-    second: i15394695773_0
+      213: -1379198370842402911
+    second: Henesys_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: i15394695773_0
+      name: Henesys_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 792
-        height: 450
+        width: 960
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fbff4e49134d75280800000000000000
-      internalID: -9054535216388571201
+      spriteID: 1af1427936a1cdce0800000000000000
+      internalID: -1379198370842402911
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      i15394695773_0: -9054535216388571201
+      Henesys_0: -1379198370842402911
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

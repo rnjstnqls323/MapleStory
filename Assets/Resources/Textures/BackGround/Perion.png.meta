@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4c4c274ec67b8c84e97929abc16df04a
+guid: 93e80d2c60a9bbe4299d61dea216e074
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3782165090471694771
-    second: i15312819871_0
+      213: -5404018607105879230
+    second: Perion_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: i15312819871_0
+      name: Perion_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 568
-        height: 450
+        width: 960
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3b1d27b6c13fc7430800000000000000
-      internalID: 3782165090471694771
+      spriteID: 2435ad365b11105b0800000000000000
+      internalID: -5404018607105879230
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      i15312819871_0: 3782165090471694771
+      Perion_0: -5404018607105879230
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
