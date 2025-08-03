@@ -1,0 +1,5 @@
+﻿Key,AttackKey,Type,Name,HealthPoint,AttackPower
+1000,0,1,PlayerLevelUpStat,50,50
+1001,3001,1,Warior,600,50
+2000,0,2,MonsterLevelUpStat,50,30
+2001,3001,2,MushRoom,200,30
