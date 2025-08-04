@@ -1,16 +1,12 @@
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : Singleton<PlayerManager>
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private int _key;
 
-    // Update is called once per frame
-    void Update()
+    public int Key
     {
-        
+        get { return _key; }
+        set { _key = value; }
     }
 }
