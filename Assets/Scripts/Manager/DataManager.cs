@@ -56,7 +56,21 @@ public class DataManager : Singleton<DataManager>
     {
         return _characterDatas[key];
     }
-    
+    public List<int> GetSkillList(int key)
+    {
+        List<int> list = new List<int>();
+        foreach(int i in _skillDatas.Keys)
+        {
+            if (_skillDatas[i].CharacterKey == key)
+                list.Add(i);
+        }
+
+        return list;
+    }
+    public MonsterData GetMonsterData(int key)
+    {
+        return _monsterDatas[key];
+    }
 
     private void LoadCharacterDatas()
     {

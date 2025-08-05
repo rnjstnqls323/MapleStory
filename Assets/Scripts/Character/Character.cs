@@ -3,17 +3,42 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
-    protected CharacterData _data;
     protected int _healthPoint;
     protected int _attackPower;
     protected int _maxHealth;
+    protected int _characterType;
+    protected CharacterData _data;
+    protected SkillManager _skillManager;
 
-    protected virtual void SettingCharacter()
+    public int Key
     {
+        get { return _data.Key; }
+    }
+    public int AttackPower
+    {
+        get {  return _attackPower; }
+    }
+    public int CharacterType
+    {
+        get { return _characterType; }
+    }
+    public void GetAttacked(int power)
+    {
+        _healthPoint = power;
+        print("공격받음");
+    }
+    protected virtual void SettingCharacter(int key)
+    {
+        _data = DataManager.Instance.GetCharacterData(Key);
         _maxHealth = _data.HealthPoint;
         _healthPoint = _data.HealthPoint;
         _attackPower = _data.AttackPower;
-
+        _characterType = _data.Type / 10;
+        SettingSkill();
     }
-    protected abstract void GetAttacked();
+    protected virtual void SettingSkill()
+    {
+        _skillManager = new SkillManager(this, _data.AttackKey);
+    }
+
 }
