@@ -67,6 +67,16 @@ public class DataManager : Singleton<DataManager>
 
         return list;
     }
+    public List<int> GetAllItemKey()
+    {
+        List<int> list = new List<int>();
+        foreach (int i in _itemDatas.Keys) { list.Add(i); }
+        return list;
+    }
+    public SkillData GetSkillData(int key)
+    {
+        return _skillDatas[key];
+    }
     public MonsterData GetMonsterData(int key)
     {
         return _monsterDatas[key];

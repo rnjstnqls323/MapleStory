@@ -3,15 +3,22 @@ using UnityEngine.UIElements;
 
 public class PlayerMoveController : MonoBehaviour
 {
+    private enum CharacterState
+    {
+        Idle, Move, Jump, Attack, Skill1
+    }
     private readonly int MaxJumpNum = 2;
     private bool _isFlip = false;
     private bool _isOnTheFloor = true;
+    
+
     private float _jumpForce = 7f;
     private float _moveSpeed = 3f; //캐릭터 테이블에있음.
     private int _jumpNum = 0;
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
     private Rigidbody2D _rigidBody;
+    private CharacterState _state = CharacterState.Idle;
 
 
 
@@ -25,8 +32,9 @@ public class PlayerMoveController : MonoBehaviour
     {
 
         Jump();
+        Animation();
+        ChangeAnimation();
         _spriteRenderer.flipX = _isFlip;
-
     }
     private void FixedUpdate()
     {
@@ -37,7 +45,7 @@ public class PlayerMoveController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) &&  _jumpNum < MaxJumpNum)
         {
             _jumpNum++;
-            _animator.SetInteger("State", 2);
+            _state = CharacterState.Jump;
             _isOnTheFloor = false;
             _rigidBody.AddForce(Vector3.up * _jumpForce, ForceMode2D.Impulse);
         }
@@ -48,26 +56,61 @@ public class PlayerMoveController : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             _isFlip = true;
-            _animator.SetInteger("State", 1);
             transform.Translate(Vector3.right*Time.deltaTime * _moveSpeed);
             //_rigidBody.linearVelocity = Vector3.right * _moveSpeed;
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             _isFlip = false;
-            _animator.SetInteger("State", 1);
             transform.Translate(Vector3.left * Time.deltaTime * _moveSpeed);
+        }
+
+    }
+    private void Animation()
+    {
+        if (Input.GetKey(KeyCode.RightArrow)|| Input.GetKey(KeyCode.LeftArrow))
+        {
+            _state = CharacterState.Move;
         }
         else
         {
-            _animator.SetInteger("State", 0);
+            _state = CharacterState.Idle;
         }
 
-        if(!_isOnTheFloor)
+        if (!_isOnTheFloor)
         {
-            _animator.SetInteger("State", 2);
+            _state = CharacterState.Jump;
         }
 
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            _state = CharacterState.Attack;
+        }
+        else if (Input.GetKey(KeyCode.Q))
+        {
+            _state = CharacterState.Skill1;
+        }
+    }
+    private void ChangeAnimation()
+    {
+        switch(_state)
+        {
+            case CharacterState.Idle:
+                _animator.SetInteger("State", 0);
+                break;
+            case CharacterState.Move:
+                _animator.SetInteger("State", 1);
+                break;
+            case CharacterState.Jump:
+                _animator.SetInteger("State", 2);
+                break;
+            case CharacterState.Attack:
+                _animator.SetInteger("State", 3);
+                break;
+            case CharacterState.Skill1:
+                _animator.SetInteger("State", 4);
+                break;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -75,7 +118,7 @@ public class PlayerMoveController : MonoBehaviour
         {
             if (_isOnTheFloor) return;
             _jumpNum = 0;
-            _animator.SetInteger("State", 0);
+            _state = CharacterState.Idle;
             _isOnTheFloor = true;
         }
     }

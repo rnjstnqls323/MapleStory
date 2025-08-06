@@ -11,19 +11,17 @@ public class HitSkill : Skill
         Vector3 pos = new Vector3(_owner.transform.position.x, _owner.transform.position.y, 0);
 
 
-        foreach (Character target in _targetList)
+        foreach (GameObject target in _targetList)
         {
             float x = target.transform.position.x;
-
-            if (isFlipped)
+            Character character = target.GetComponent<Character>();
+            if (!isFlipped && x <= pos.x && x >= pos.x - _data.Range)
             {
-                if (x <= pos.x && x >= pos.x - _data.Range)
-                    target.GetAttacked(_attackPower);
+                character.GetAttacked(_attackPower);
             }
-            else
+            else if(isFlipped && x >= pos.x && x <= pos.x + _data.Range)
             {
-                if (x >= pos.x && x <= pos.x - _data.Range)
-                    target.GetAttacked(_attackPower);
+                character.GetAttacked(_attackPower);
             }
         }
     }

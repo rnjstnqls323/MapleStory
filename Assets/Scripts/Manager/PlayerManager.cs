@@ -11,10 +11,22 @@ public class PlayerManager : Singleton<PlayerManager>
     private int _exp;
     private int _level = 1;
     private int _money;
+    private Player _player;
     private Dictionary<PlayerAbility, int> _ability = new Dictionary<PlayerAbility, int>();
     private PlayerAbility _mainAbility;
 
-
+    public PlayerManager()
+    {
+        _ability.Add(PlayerAbility.Str, 0);
+        _ability.Add(PlayerAbility.Dex, 0);
+        _ability.Add(PlayerAbility.Int, 0);
+        _ability.Add(PlayerAbility.Luk, 0);
+    }
+    public Player Player
+    {
+        get { return _player; }
+        set { _player = value; }
+    }
     public int Key
     {
         get { return _key; }
@@ -44,7 +56,6 @@ public class PlayerManager : Singleton<PlayerManager>
     public void AddAbility(PlayerAbility key, int value)
     {
         _ability[key] = value;
-
     }
 
     public void AddExp(int exp)

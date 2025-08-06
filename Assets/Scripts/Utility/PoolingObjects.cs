@@ -85,6 +85,10 @@ public class PoolingObject
         _objects[true].Add(obj);
         return obj;
     }
+    public List<GameObject> GetActiveObject()
+    {
+        return _objects[true];
+    }
     public bool DisableObject(GameObject obj)
     {
         if (!_objects[true].Contains(obj)) return false;
