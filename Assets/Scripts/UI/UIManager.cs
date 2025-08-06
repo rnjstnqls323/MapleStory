@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         _inventoryPanel = transform.Find("Inventory").gameObject;
+        InventoryManager.Instance.UpdateButtons();
         _inventoryPanel.SetActive(false); 
     }
     private void Update()
@@ -26,6 +27,12 @@ public class UIManager : MonoBehaviour
             }
             _isInventoryPanel = true;
             _inventoryPanel.SetActive(true);
+            InventoryManager.Instance.UpdateButtons();
+        }
+        else if(Input.GetKeyUp(KeyCode.Escape))
+        {
+            _isInventoryPanel = false;
+            _inventoryPanel.SetActive(false);
         }
     }
 }

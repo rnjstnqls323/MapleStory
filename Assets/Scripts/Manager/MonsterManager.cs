@@ -21,6 +21,7 @@ public class MonsterManager : Singleton<MonsterManager>
     public void DespawnMonster(Monster monster)
     {
         _monsters.DisableObject(monster.gameObject);
+        ItemManager.Instance.SpawnItem(monster.transform.position);
     }
     public List<GameObject> GetSpawnMonsterList()
     {

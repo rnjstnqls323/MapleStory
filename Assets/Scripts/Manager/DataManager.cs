@@ -67,6 +67,10 @@ public class DataManager : Singleton<DataManager>
 
         return list;
     }
+    public ItemData GetItemData(int key)
+    {
+        return _itemDatas[key];
+    }
     public List<int> GetAllItemKey()
     {
         List<int> list = new List<int>();

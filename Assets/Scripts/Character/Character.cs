@@ -30,6 +30,11 @@ public abstract class Character : MonoBehaviour
     public int HealthPoint
     {
         get { return _healthPoint; }
+        set 
+        {
+            SetHealthPoint(value);
+            print("체력 추가~");
+        }
     }
     public virtual void GetAttacked(int power)
     {
@@ -53,6 +58,11 @@ public abstract class Character : MonoBehaviour
     {
         _skillManager = new SkillManager(this, _data.AttackKey);
         SettingTarget();
+    }
+    protected void SetHealthPoint(int addHp)
+    {
+        _healthPoint += addHp;
+        if(_healthPoint > _maxHealth) { _healthPoint = _maxHealth; }
     }
     protected abstract void SettingTarget();
 

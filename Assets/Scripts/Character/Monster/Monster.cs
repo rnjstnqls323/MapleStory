@@ -1,6 +1,7 @@
 using NUnit.Framework;
-using UnityEngine;
 using System.Collections.Generic;
+using System.Threading;
+using UnityEngine;
 
 public class Monster : Character
 {
@@ -30,6 +31,8 @@ public class Monster : Character
     {
         if (_isDie) return;
         _animator.SetInteger("State", 0);
+
+        _skillManager.UseSkill(_data.AttackKey);
     }
     protected void LateUpdate()
     {
@@ -37,6 +40,7 @@ public class Monster : Character
         {
             MonsterManager.Instance.SpawnMonster();
             MonsterManager.Instance.DespawnMonster(this);
+            PlayerManager.Instance.AddExp(_monsterData.Experience);
         }
     }
     protected override void SettingTarget()
