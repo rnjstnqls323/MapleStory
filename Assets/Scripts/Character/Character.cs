@@ -22,6 +22,7 @@ public abstract class Character : MonoBehaviour
     public int AttackPower
     {
         get {  return _attackPower; }
+        set { _attackPower += value; }
     }
     public int CharacterType
     {

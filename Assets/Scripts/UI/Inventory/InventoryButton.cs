@@ -46,9 +46,17 @@ public class InventoryButton : MonoBehaviour
     private void OnButtonClick()
     {
         if (_isNone) return;
+        if(DataManager.Instance.GetItemData(_itemKey).Type == 1)
+        {
+            _player.HealthPoint = DataManager.Instance.GetItemData(_itemKey).Value;
+            InventoryManager.Instance.UseItem(_itemKey);
+        }
+        else
+        {
+            _player.AttackPower = DataManager.Instance.GetItemData(_itemKey).Value;
+            InventoryManager.Instance.UseItem(_itemKey);
+        }
 
-        _player.HealthPoint = DataManager.Instance.GetItemData(_itemKey).Value;
-        InventoryManager.Instance.UseItem(_itemKey);
     }
 
 }

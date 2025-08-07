@@ -3,11 +3,16 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     private int _key;
+    private int _type;
 
     public int Key
     {
         get { return _key; }
         set { _key = value; }
+    }
+    public int Type
+    {
+        get { return _type; }
     }
 
     private void AddInventory()
@@ -20,7 +25,6 @@ public class Item : MonoBehaviour
         {
             AddInventory();
             gameObject.SetActive(false);
-            
         }
     }
 }

@@ -12,7 +12,17 @@ public class ItemManager : Singleton<ItemManager>
     {
         Item item = _items.Pop().GetComponent<Item>();
         item.transform.position = pos;
-        item.Key = 5001;
+        int randNum = Random.Range(0, 2);
+        switch(randNum)
+        {
+            case 0:
+                item.Key = 5001;
+                break;
+            case 1:
+                item.Key = 5002;
+                break;
+        }
+
     }
     private void CreateItems()
     {
