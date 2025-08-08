@@ -2,6 +2,7 @@
 {
     float4 baseColor = MainTex.Sample(MainTex.samplerstate, UV); // Shader Graph 호환
     float2 imageSize = float2(1920, 1080);
+    float4 _MainTex_TexelSize;
     float weight = 1;
     float4 outlineColor = float4(1, 0, 0, 1); 
     float count = 0;
